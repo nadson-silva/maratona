@@ -17,7 +17,9 @@ Data: 11/04/2023
 
 
 import tkinter as tk
-import problema_01
+import cifra_de_cesar
+import cifra_de_vegenere
+import cerca_de_trilho
 import clipboard
 
 global backgound_color
@@ -57,11 +59,11 @@ def cesarWindow():
     key_entry.place(relx=0.35, rely=0.3, relwidth=0.5)
 
     encode_button = tk.Button(cesarFrame, text="Codificar Mensagem",
-                              command=lambda: problema_01.encode(text_entry.get().upper(), key_entry.get(), output_label))
+                              command=lambda: cifra_de_cesar.encode(text_entry.get().upper(), key_entry.get(), output_label))
     encode_button.place(relx=0.15, rely=0.45, relwidth=0.3)
 
     decode_button = tk.Button(cesarFrame, text="Decodificar Mensagem",
-                              command=lambda: problema_01.decode(text_entry.get().upper(), key_entry.get(), output_label))
+                              command=lambda: cifra_de_cesar.decode(text_entry.get().upper(), key_entry.get(), output_label))
     decode_button.place(relx=0.55, rely=0.45, relwidth=0.3)
 
     output_label = tk.Label(cesarFrame, text='')
@@ -97,12 +99,12 @@ def vigenereWindow():
     key_entry.place(relx=0.35, rely=0.3, relwidth=0.5)
 
     encode_button = tk.Button(vigenereFrame, text="Codificar Mensagem",
-                              command=lambda: problema_01.encode(text_entry.get().upper(), key_entry.get(), output_label))
+                              command=lambda: cifra_de_vegenere.encode(text_entry.get().upper(), key_entry.get().upper(), output_label))
     encode_button.place(relx=0.15, rely=0.45, relwidth=0.3)
 
     decode_button = tk.Button(vigenereFrame, text="Decodificar Mensagem",
-                              command=lambda: problema_01.decode(text_entry.get().upper(), key_entry.get(), output_label))
-    decode_button.place(relx=0.55, rely=0.45, relwidth=0.3)
+                              command=lambda: cifra_de_vegenere.decode(text_entry.get().upper(), key_entry.get().upper(), output_label))
+    decode_button.place(relx=0.55, rely=0.45, relwidth=0.3) 
 
     output_label = tk.Label(vigenereFrame, text='')
     output_label.place(relx=0.1, rely=0.55, relwidth=0.8, relheight=0.2)
@@ -114,7 +116,47 @@ def vigenereWindow():
     menu_button.place(relx=0.1, rely=0.9, relwidth=0.1)
 
     vigenereFrame.tkraise()
+    
+def cercaDeTrilho():
+    trilhoFrame = tk.Frame(root, background=backgound_color)
+    trilhoFrame.place(relheight=1, relwidth=1)
 
+    label_title = tk.Label(trilhoFrame, text="CERCA DE TRILHO",
+                           background=backgound_color, font=("Arial", 15))
+    label_title.place(relwidth=0.9, height=50, relx=0.05, rely=0.05)
+
+    text_label = tk.Label(trilhoFrame, text='Insira sua mensagem:')
+    text_label.place(relx=0.05, rely=0.2, relwidth=0.25)
+
+    text_entry = tk.Entry(trilhoFrame)
+    text_entry.place(relx=0.35, rely=0.2, relwidth=0.5)
+
+    key_label = tk.Label(trilhoFrame, text='Insira a chave:')
+    key_label.place(relx=0.05, rely=0.3, relwidth=0.25)
+
+    key_entry = tk.Entry(trilhoFrame)
+    key_entry.place(relx=0.35, rely=0.3, relwidth=0.5)
+
+    encode_button = tk.Button(trilhoFrame, text="Codificar Mensagem",
+                              command=lambda: cerca_de_trilho.encode(text_entry.get().upper(), key_entry.get().upper(), output_label))
+    encode_button.place(relx=0.15, rely=0.45, relwidth=0.3)
+
+    decode_button = tk.Button(trilhoFrame, text="Decodificar Mensagem",
+                              command=lambda: cerca_de_trilho.decode(text_entry.get().upper(), key_entry.get().upper(), output_label))
+    decode_button.place(relx=0.55, rely=0.45, relwidth=0.3) 
+
+    output_label = tk.Label(trilhoFrame, text='')
+    output_label.place(relx=0.1, rely=0.55, relwidth=0.8, relheight=0.2)
+    
+    copy_button = tk.Button(trilhoFrame, text='Copiar', command=lambda: copy(output_label.cget('text')))
+    copy_button.place(relx=0.45 , rely=0.8, relwidth=0.1)
+
+    menu_button = tk.Button(trilhoFrame, text='Menu', command=menuWindow)
+    menu_button.place(relx=0.1, rely=0.9, relwidth=0.1)
+
+    trilhoFrame.tkraise()
+
+# Main
 root = tk.Tk()
 
 root.title("Maratona de programação")
