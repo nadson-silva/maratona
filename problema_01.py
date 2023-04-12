@@ -32,6 +32,12 @@ def encode(text, key, output):
         output.config(text='TEXTO INVALIDO... TENTE NOVAMENTE!',
                       foreground="red")
         return False
+    try:
+        key = int(key)
+    except:
+        output.config(text='CHAVE INVALIDA... TENTE NOVAMENTE!',
+                      foreground="red")
+        return False
     new_char = ''
     for letter in text:
         index = (char.index(letter) + key) % 37
@@ -51,6 +57,11 @@ def decode(text, key, output):
         output.config(text='TEXTO INVALIDO... TENTE NOVAMENTE!',
                       foreground="red")
         return False
+    try:
+        key = int(key)
+    except:
+        output.config(text='CHAVE INVALIDA... TENTE NOVAMENTE!',
+                      foreground="red")
     new_char = ''
     for letter in text:
         index = char.index(letter) - key
