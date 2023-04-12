@@ -42,12 +42,7 @@ def encode(text, key, output):
     for letter in text:
         index = (char.index(letter) + key) % 37
 
-        # if index > 36:
-        #     while index > 36:
-        #         index -= 37
-
         new_char = new_char + char[index]
-    print(new_char)
     output.config(text=new_char)
     return True
 
@@ -70,45 +65,3 @@ def decode(text, key, output):
         new_char = new_char + char[index]
     output.config(text=new_char)
     return True
-
-
-# while True:
-#     print('-'*43)
-#     print('|         Escolha uma das opções          |')
-#     print('|         1 - Codificar Mensagem          |')
-#     print('|         2 - Decodificar Mensagem        |')
-#     print('|         0 - Sair                        |')
-#     print('-'*43)
-
-#     option = input('Digite a Opção escolhida: ')
-
-#     if option == 1:
-#         text = input('Digite um texto para ser codificado:').upper()
-#         if textValidation(text):
-#             try:
-#                 key = int(
-#                     input('Informe a chave numérica para codificar o texto: '))
-#                 encode(text, key)
-#             except:
-#                 print('A chave precisa ser um número inteiro')
-
-#         else:
-#             print('O texto inserido nâo segue o padrão esperado. Tente novamente!')
-#     elif option == 2:
-#         text = input('Digite um texto para ser decodificado:').upper()
-#         if textValidation(text):
-#             try:
-#                 key = int(
-#                     input('Informe a chave numérica para codificar o texto: '))
-#                 decode(text, key)
-#             except:
-#                 print('A chave precisa ser um número inteiro')
-
-#         else:
-#             print('O texto inserido nâo segue o padrão esperado. Tente novamente!')
-
-#     elif option == 0:
-#         print("Bye")
-#         exit()
-#     else:
-#         print('Opção invalida. Tente novamente')
