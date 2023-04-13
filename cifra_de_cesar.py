@@ -20,16 +20,18 @@ char = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N
         'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 
-def textValidation(text):
+def textValidation(text, key):
     for letter in text:
         if letter not in char:
+            return False
+        if len(key) > 1:
             return False
     return True
 
 
 def encode(text, key, output):
-    if not textValidation(text):
-        output.config(text='TEXTO INVALIDO... TENTE NOVAMENTE!',
+    if not textValidation(text, key):
+        output.config(text='TEXTO OU CHAVE INVALIDA... TENTE NOVAMENTE!',
                       foreground="red")
         return False
     try:
@@ -48,8 +50,8 @@ def encode(text, key, output):
 
 
 def decode(text, key, output):
-    if not textValidation(text):
-        output.config(text='TEXTO INVALIDO... TENTE NOVAMENTE!',
+    if not textValidation(text, key):
+        output.config(text='TEXTO OU CHAVE INVALIDA... TENTE NOVAMENTE!',
                       foreground="red")
         return False
     try:
