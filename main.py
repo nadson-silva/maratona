@@ -19,7 +19,7 @@ Data: 11/04/2023
 import tkinter as tk
 import cifra_de_cesar
 import cifra_de_vegenere
-import cerca_de_trilho
+# import cerca_de_trilho
 import clipboard
 
 global backgound_color
