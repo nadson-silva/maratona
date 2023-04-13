@@ -118,6 +118,8 @@ def decode(text, key, output):
             colunas = [""]*7
             linhas = len(text) // 7
             matriz = [colunas]*(linhas)
+            for i in range(len(matriz)):
+                matriz[i] = list(matriz[i])
         else:
             colunas = [""]*7
             linhas = len(text) // 7 + 1
