@@ -19,7 +19,7 @@ Data: 11/04/2023
 import tkinter as tk
 import cifra_de_cesar
 import cifra_de_vegenere
-# import cerca_de_trilho
+import cerca_de_trilho
 import clipboard
 
 global backgound_color
@@ -32,10 +32,10 @@ def toDo():
 
 def menuWindow():
     menu.tkraise()
-    
+
+
 def copy(text):
     clipboard.copy(text)
-    
 
 
 def cesarWindow():
@@ -68,9 +68,10 @@ def cesarWindow():
 
     output_label = tk.Label(cesarFrame, text='')
     output_label.place(relx=0.1, rely=0.55, relwidth=0.8, relheight=0.2)
-    
-    copy_button = tk.Button(cesarFrame, text='Copiar', command=lambda: copy(output_label.cget('text')))
-    copy_button.place(relx=0.45 , rely=0.8, relwidth=0.1)
+
+    copy_button = tk.Button(cesarFrame, text='Copiar',
+                            command=lambda: copy(output_label.cget('text')))
+    copy_button.place(relx=0.45, rely=0.8, relwidth=0.1)
 
     menu_button = tk.Button(cesarFrame, text='Menu', command=menuWindow)
     menu_button.place(relx=0.1, rely=0.9, relwidth=0.1)
@@ -104,19 +105,21 @@ def vigenereWindow():
 
     decode_button = tk.Button(vigenereFrame, text="Decodificar Mensagem",
                               command=lambda: cifra_de_vegenere.decode(text_entry.get().upper(), key_entry.get().upper(), output_label))
-    decode_button.place(relx=0.55, rely=0.45, relwidth=0.3) 
+    decode_button.place(relx=0.55, rely=0.45, relwidth=0.3)
 
     output_label = tk.Label(vigenereFrame, text='')
     output_label.place(relx=0.1, rely=0.55, relwidth=0.8, relheight=0.2)
-    
-    copy_button = tk.Button(vigenereFrame, text='Copiar', command=lambda: copy(output_label.cget('text')))
-    copy_button.place(relx=0.45 , rely=0.8, relwidth=0.1)
+
+    copy_button = tk.Button(vigenereFrame, text='Copiar',
+                            command=lambda: copy(output_label.cget('text')))
+    copy_button.place(relx=0.45, rely=0.8, relwidth=0.1)
 
     menu_button = tk.Button(vigenereFrame, text='Menu', command=menuWindow)
     menu_button.place(relx=0.1, rely=0.9, relwidth=0.1)
 
     vigenereFrame.tkraise()
-    
+
+
 def cercaDeTrilho():
     trilhoFrame = tk.Frame(root, background=backgound_color)
     trilhoFrame.place(relheight=1, relwidth=1)
@@ -143,18 +146,20 @@ def cercaDeTrilho():
 
     decode_button = tk.Button(trilhoFrame, text="Decodificar Mensagem",
                               command=lambda: cerca_de_trilho.decode(text_entry.get().upper(), key_entry.get().upper(), output_label))
-    decode_button.place(relx=0.55, rely=0.45, relwidth=0.3) 
+    decode_button.place(relx=0.55, rely=0.45, relwidth=0.3)
 
     output_label = tk.Label(trilhoFrame, text='')
     output_label.place(relx=0.1, rely=0.55, relwidth=0.8, relheight=0.2)
-    
-    copy_button = tk.Button(trilhoFrame, text='Copiar', command=lambda: copy(output_label.cget('text')))
-    copy_button.place(relx=0.45 , rely=0.8, relwidth=0.1)
+
+    copy_button = tk.Button(trilhoFrame, text='Copiar',
+                            command=lambda: copy(output_label.cget('text')))
+    copy_button.place(relx=0.45, rely=0.8, relwidth=0.1)
 
     menu_button = tk.Button(trilhoFrame, text='Menu', command=menuWindow)
     menu_button.place(relx=0.1, rely=0.9, relwidth=0.1)
 
     trilhoFrame.tkraise()
+
 
 # Main
 root = tk.Tk()
@@ -169,6 +174,7 @@ menu.place(relheight=1, relwidth=1)
 label_title = tk.Label(
     menu, text='ESCOLHA UMA DAS OPÇÕES ABAIXO', background=backgound_color, font=("Arial", 15))
 label_title.place(relwidth=0.9, height=50, relx=0.05, rely=0.05)
+label_title.config(foreground='white')
 
 cifra_cesar = tk.Button(menu, text='Cifra de Céasar', command=cesarWindow)
 cifra_cesar.place(relwidth=0.35, height=50, relx=0.325, rely=0.25)
@@ -177,7 +183,7 @@ cifra_vigenere = tk.Button(
     menu, text='Cifra de Vigenère II', command=vigenereWindow)
 cifra_vigenere.place(relwidth=0.35, height=50, relx=0.325, rely=0.55)
 
-cerca_trilho = tk.Button(menu, text='Cerca de Trilho', command=lambda: toDo)
+cerca_trilho = tk.Button(menu, text='Cerca de Trilho', command=cercaDeTrilho)
 cerca_trilho.place(relwidth=0.35, height=50, relx=0.325, rely=0.85)
 
 

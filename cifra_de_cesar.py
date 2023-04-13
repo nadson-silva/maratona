@@ -43,7 +43,7 @@ def encode(text, key, output):
         index = (char.index(letter) + key) % 37
 
         new_char = new_char + char[index]
-    output.config(text=new_char)
+    output.config(text=new_char, foreground="black")
     return True
 
 
@@ -63,5 +63,5 @@ def decode(text, key, output):
         while index < 0:
             index += 37
         new_char = new_char + char[index]
-    output.config(text=new_char)
+    output.config(text=new_char, foreground="black")
     return True
