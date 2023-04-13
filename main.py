@@ -176,7 +176,7 @@ label_title = tk.Label(
 label_title.place(relwidth=0.9, height=50, relx=0.05, rely=0.05)
 label_title.config(foreground='white')
 
-cifra_cesar = tk.Button(menu, text='Cifra de Céasar', command=cesarWindow)
+cifra_cesar = tk.Button(menu, text='Cifra de César', command=cesarWindow)
 cifra_cesar.place(relwidth=0.35, height=50, relx=0.325, rely=0.25)
 
 cifra_vigenere = tk.Button(
