@@ -28,7 +28,7 @@ def textValidation(text, key):
             int(letter)
         except:
             return False
-    if not len(set(key)) == 7:
+    if len(set(key)) != 7 or len(key) != 7:
         return False
     return True
 
