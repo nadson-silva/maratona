@@ -10,25 +10,25 @@ else:
     linhas = len(palavra_e) // 7 + 1
     matriz = [ colunas ]*(linhas)
 
-#print(matriz)
-
-
-#cont_coluna = -1
 cont_l = 0
-pular_prox = 0
+matriz_tuple = [""]*linhas
 lista_chave = [0]*len(chave_e)
 cont = -1
+
+pular_prox = 0
 
 for i in chave_e:
     cont += 1
     lista_chave[cont] = i
 
-for cont_linha in range(0, linhas + 1):
-    for cont_coluna in range(0, 8) :
-        matriz[cont_linha][cont_coluna + pular_prox] = palavra_e[cont_coluna + pular_prox]
-        if (cont_coluna == 7):
+for cont_linha in range(0, linhas):
+    for cont_coluna in range(0, 7) :
+        index = cont_coluna + pular_prox
+        matriz[cont_linha][cont_coluna] = palavra_e[index]
+        if (cont_coluna == 6):
             cont_l += 1
             pular_prox += 7
+        matriz_tuple[cont_linha] = tuple(matriz[cont_linha])
 
-print(matriz)
+print(matriz_tuple)
 
